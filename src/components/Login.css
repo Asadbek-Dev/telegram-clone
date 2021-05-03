@@ -8,7 +8,7 @@
     color: white;
 }
 
-.login > img{
+ img{
     object-fit: contain;
     height: 150px;
 }

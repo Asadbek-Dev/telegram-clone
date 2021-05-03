@@ -13,7 +13,7 @@ const Login = () => {
         <div className='login'>
             <div className='login__telegram'>
                 <img
-                    src={`${process.env.PUBLIC_URL}telegramlogo.png`}
+                    src='https://upload.wikimedia.org/wikipedia/commons/5/5c/Telegram_Messenger.png'
                 />
                 <h1>Telegram</h1>
             </div>

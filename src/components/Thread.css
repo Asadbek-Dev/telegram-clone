@@ -29,3 +29,40 @@
 .thread__header__details:hover{
     color: rgba(1,150,199);
 }
+
+
+.thread__messages{
+    flex: 1;
+    overflow: scroll;
+}
+.thread__header::-webkit-scrollbar{
+    display: none;
+}
+.thread__input{
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: transparent;
+    border-top: 1px solid rgb(190,190,190,0.1);
+}
+.thread__input > form{
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+}
+.thread__input > form > input{
+    width: 98%;
+    outline-width: 0 !important;
+    border: none;
+    border-radius: 0 i !important;
+    background-color: transparent;
+    padding: 5px;
+    color: red;
+}
+
+.thread__input > form > button{
+    color:white;
+}
+.thread__input > form > button:hover{
+    color: rgb(2,150,199);
+}

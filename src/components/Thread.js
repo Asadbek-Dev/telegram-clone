@@ -18,36 +18,58 @@ const Thread = () => {
 
     useEffect(() => {
         if (threadId) {
-            db.collection('threads').collection('messages').orderBy('timestamp', 'desc')
+            db.collection('threads').doc(threadId).collection('messages').orderBy('timestamp', 'desc')
                 .onSnapshot((snapshot) => setMessages(snapshot.docs.map((doc) => ({
                     id: doc.id,
                     data: doc.data(),
                 }))))
         }
     }, [threadId])
+    console.log(messages)
 
     const sendMessage = (e) => {
         e.preventDefault();
-        db.collection('threads').doc(threadId).collection('message').add({
+        db.collection('threads').doc(threadId).collection('messages').add({
             timestamp: firebase.firestore.FieldValue.serverTimestamp(),
             message: input,
             uid: user.uid,
             photo: user.photo,
             email: user.email,
             displayName: user.displayName,
-        });
+        }).then(() => {
+            setInput('');
+        })
 
-        setInput('')
-    }
-    console.log(input)
+    };
+    // const startTimeOut = (input, uid) => {
+    //     console.log('this worked');
+    //     db.collection('threads')
+    //         .doc(threadId)
+    //         .collection('messages')
+    //         .where('message', '==', input)
+    //         .where('uid', '==', uid)
+    //         .get()
+    //         .then((querySnapshot) => {
+    //             querySnapshot.forEach((doc) => {
+    //                 doc.ref
+    //                     .delete()
+    //                     .then(() => {
+    //                         console.log('Message successfully deleted!');
+    //                     })
+    //                     .catch(function (error) {
+    //                         console.log('Error removing message:', error)
+    //                     });
+    //             });
+    //         });
+    // };
     return (
         <div className='thread'>
             <div className='thread__header'>
                 <div className='thread__header__contents'>
                     <Avatar />
                     <div className='thread__header__contents__info'>
-                        <h4>ThreadName</h4>
-                        <h5>Last seen </h5>
+                        <h4>{threadName}</h4>
+                        <h5>Last seen{' '} </h5>
                     </div>
                 </div>
                 <IconButton>
@@ -61,7 +83,11 @@ const Thread = () => {
             </div>
             <div className='thread__input'>
                 <form>
-                    <input placeholder='Write a message...' value={input} type='text' onChange={(e) => setInput(e.target.value)} />
+                    <input
+                        placeholder='Write a message...'
+                        value={input} type='text'
+                        onChange={(e) => setInput(e.target.value)}
+                    />
                     <IconButton>
                         <TimerOutlined />
                     </IconButton>

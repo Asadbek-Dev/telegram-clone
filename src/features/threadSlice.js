@@ -9,7 +9,7 @@ export const threadSlice = createSlice({
     },
     reducers: {
         setThread: (state, action) => {
-            state.thread = action.payload.threadId;
+            state.threadId = action.payload.threadId;
             state.threadName = action.payload.threadName;
         },
     },

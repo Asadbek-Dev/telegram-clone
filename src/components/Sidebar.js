@@ -13,7 +13,7 @@ const Sidebar = () => {
     const user = useSelector(selectUser);
     const [threads, setThreads] = useState([]);
     useEffect(() => {
-        db.collection('treads').onSnapshot((snapshot) => setThreads(snapshot.docs.map((doc) => ({
+        db.collection('threads').onSnapshot((snapshot) => setThreads(snapshot.docs.map((doc) => ({
             id: doc.id,
             data: doc.data(),
         }))))

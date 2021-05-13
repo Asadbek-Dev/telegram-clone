@@ -2,6 +2,7 @@ import { Avatar } from '@material-ui/core'
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { selectUser } from '../features/userSlice';
+import './Message.css'
 
 
 const Message = ({ id, data: { timestamp, displayName, email, message, photo, uid } }) => {

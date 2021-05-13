@@ -34,8 +34,7 @@ const SidebarThread = ({ id, threadName }) => {
                 {/* <p>{threadInfo[0]?.message}</p> */}
                 <p>Hello</p>
                 <small className='sidebarThread__timestamp'>
-                    {/* {new Date(threadInfo[0]?.timestamp?.toDate())} */}
-                    timestamp
+                    {new Date(threadInfo[0]?.timestamp?.toDate()).toLocaleString()}
                 </small>
             </div>
         </div>

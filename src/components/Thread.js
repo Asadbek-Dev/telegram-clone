@@ -1,5 +1,5 @@
 import { Avatar, IconButton } from '@material-ui/core'
-import { MicNoneOutlined, MoreHoriz, SendRounded, TimerOutlined } from '@material-ui/icons'
+import { AttachFileOutlined, MicNoneOutlined, MoreHoriz, SendRounded, TimerOutlined } from '@material-ui/icons'
 import React, { useEffect, useState } from 'react'
 import './Thread.css'
 import db from '../firebase';
@@ -41,27 +41,6 @@ const Thread = () => {
         })
 
     };
-    // const startTimeOut = (input, uid) => {
-    //     console.log('this worked');
-    //     db.collection('threads')
-    //         .doc(threadId)
-    //         .collection('messages')
-    //         .where('message', '==', input)
-    //         .where('uid', '==', uid)
-    //         .get()
-    //         .then((querySnapshot) => {
-    //             querySnapshot.forEach((doc) => {
-    //                 doc.ref
-    //                     .delete()
-    //                     .then(() => {
-    //                         console.log('Message successfully deleted!');
-    //                     })
-    //                     .catch(function (error) {
-    //                         console.log('Error removing message:', error)
-    //                     });
-    //             });
-    //         });
-    // };
     return (
         <div className='thread'>
             <div className='thread__header'>
@@ -83,6 +62,9 @@ const Thread = () => {
             </div>
             <div className='thread__input'>
                 <form>
+                    <IconButton>
+                        <AttachFileOutlined />
+                    </IconButton>
                     <input
                         placeholder='Write a message...'
                         value={input} type='text'
